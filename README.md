@@ -14,7 +14,7 @@ https://code.google.com/p/brtos/
 
 https://brtosblog.wordpress.com/
 
-* About this demo *
+# About this demo #
 
 Clock is configured as:
  * External 8MHz from STLINK V2.
