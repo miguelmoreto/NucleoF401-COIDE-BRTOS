@@ -158,7 +158,7 @@ void TIM3_IRQHandler(){
 	 {
 		 //GPIO_ToggleBits(LED1_PORT,LED1);
 		 /* Signal main loop that one second passed */
-		 one_second_flag = 1;
+		 //one_second_flag = 1;
 
 		 //USART_SendData(USART2, 'b');
 		 // while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET)

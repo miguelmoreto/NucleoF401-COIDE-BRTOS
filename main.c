@@ -25,6 +25,8 @@
  * STLINK with 9600 baud. This way one can use the Virtual COM Port from STLINK.
  *
  * A string with a counter is printed in serial every second.
+ * When the user press the button on Nucleo board, a string is
+ * printed in serial.
  *
  * Miguel Moreto
  * Florianopolis - Brazil - 2014
@@ -45,63 +47,93 @@
   #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif /* __GNUC__ */
 
-/* Flag that is set in interrupt handler. Avoid doing slow stuff in interrupt handlers. */
-volatile uint16_t one_second_flag = 0;
+
+
 
 int main(void){
 
     SystemInit();
 #if (FPU_SUPPORT != 1)
-    // Disable automatic lazy FPU registers save
+    /* Disable automatic lazy FPU registers save */
     *(FPU_FPCCR) = 0;
 #endif
-
     SystemCoreClockUpdate();
 
     /* Configuring Peripherals: */
     MyConfigGPIO();
-    //MyConfigUSART();
-    //MyConfigTimers();
+    MyConfigUSART();
+    //MyConfigTimers(); // Not using timer in this demo.
 
-    // Initialize BRTOS
+    /* Initialize BRTOS */
     BRTOS_Init();
-
-    //uint16_t counter = 0;
 
     GPIO_SetBits(LED1_PORT, LED1);
 
-    if(InstallTask(&Task_BlinkLed,"Blink LED",256,31,NULL) != OK){
+    if (OSSemCreate(0,&SemaphoreKey) != ALLOC_EVENT_OK){
     	// Oh Oh
     	// It should not enter here!!!
     	while(1){};
     };
 
-    // Start Task Scheduler
+    /* Creates a mutex with priority equal to 10.
+     * The mutex priority have to be greater than
+     * the highest priority of the task the access
+     * the shared resource. */
+    if (OSMutexCreate(&SerialMutex,10) != ALLOC_EVENT_OK){
+    	// Mutex allocation failed
+    	// Treat this error here !!!
+    }
+
+    /* Install blink led task */
+    if(InstallTask(&Task_BlinkLed,"Blink LED",512,1,NULL) != OK){
+    	// Oh Oh
+    	// It should not enter here!!!
+    	while(1){};
+    };
+
+    /* Install key debounce task */
+    if(InstallTask(&Task_KeyDebounce,"Key debounce",512,2,NULL) != OK){
+    	// Oh Oh
+    	// It should not enter here!!!
+    	while(1){};
+    };
+
+    /* Start Task Scheduler */
     if(BRTOSStart() != OK){
     	// Oh Oh
     	// It should not enter here!!!
     	for(;;){};
     };
 
-#if 0
-    /* Main loop */
-    while(1){
-
-    	if (one_second_flag){
-    		/* Toogle LED */
-    		GPIO_ToggleBits(LED1_PORT,LED1);
-    		/* Write to USART connected with STLINK (USART2) */
-    		printf("\r\nTime elapsed is %d seconds.",counter);
-    		counter++;
-    		/* Reset flag */
-    		one_second_flag = 0;
-    	} // end one_second_flag
-    } // end main loop
-#endif
-
     return 0;
 } // end main
 
+
+/**
+  * @brief  This function handles External lines 15 to 10 interrupt request.
+  * @param  None
+  * @retval None
+  */
+void USER_BTN_IRQ_handler(void)
+{
+	EXTI_InitTypeDef   EXTI_InitStructure;
+
+	if(EXTI_GetITStatus(USER_BTN_EXTI_LINE) != RESET)
+	{
+		/* Disable user button interrupt
+		 * it will be re-enable after a perior in
+		 * debounce task */
+		EXTI_InitStructure.EXTI_Line = USER_BTN_EXTI_LINE;
+		EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+		EXTI_Init(&EXTI_InitStructure);
+		/* Wake up the Key debounce task */
+		(void)OSSemPost(SemaphoreKey);
+		/* Clear the EXTI line pending bit */
+		EXTI_ClearITPendingBit(USER_BTN_EXTI_LINE);
+	}
+	/* Exit interrupt */
+	OS_INT_EXIT_EXT();
+}
 
 /**
   * @brief  Retargets the C library printf function to the USART.

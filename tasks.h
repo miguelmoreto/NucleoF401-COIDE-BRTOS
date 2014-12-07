@@ -23,6 +23,15 @@
  * Author: Miguel Moreto
  * Florianopolis, Brazil, 2014
  */
+
 #include "BRTOS.h"
 
+/* BRTOS Semaphores */
+BRTOS_Sem     *SemaphoreKey;
+
+/* BRTOS Mutexes */
+BRTOS_Mutex *SerialMutex;
+
 void Task_BlinkLed(void);
+void Task_KeyDebounce(void);
+
