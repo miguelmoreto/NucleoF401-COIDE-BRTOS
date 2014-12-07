@@ -1,7 +1,8 @@
 /*
  * main.c
  *
- * Example Coocox project for ST NUCLEO-F401RE boar with STM32F401RE controller.
+ * Example Coocox project for BRTOS (Brazilian Real-Time Operating System)
+ * using ST NUCLEO-F401RE board with STM32F401RE controller.
  *
  * Clock is configured as:
  *   External 8MHz from STLINK V2.
@@ -30,6 +31,10 @@
  */
 #include "stm32f4xx.h"
 #include "InitPeriph.h"
+
+#include "BRTOS.h"
+#include "tasks.h"
+
 #include <stdio.h>
 
 #ifdef __GNUC__
@@ -43,21 +48,42 @@
 /* Flag that is set in interrupt handler. Avoid doing slow stuff in interrupt handlers. */
 volatile uint16_t one_second_flag = 0;
 
-int main()
-{
+int main(void){
 
     SystemInit();
+#if (FPU_SUPPORT != 1)
+    // Disable automatic lazy FPU registers save
+    *(FPU_FPCCR) = 0;
+#endif
+
     SystemCoreClockUpdate();
 
     /* Configuring Peripherals: */
     MyConfigGPIO();
-    MyConfigUSART();
-    MyConfigTimers();
+    //MyConfigUSART();
+    //MyConfigTimers();
 
-    uint16_t counter = 0;
+    // Initialize BRTOS
+    BRTOS_Init();
+
+    //uint16_t counter = 0;
 
     GPIO_SetBits(LED1_PORT, LED1);
 
+    if(InstallTask(&Task_BlinkLed,"Blink LED",256,31,NULL) != OK){
+    	// Oh Oh
+    	// It should not enter here!!!
+    	while(1){};
+    };
+
+    // Start Task Scheduler
+    if(BRTOSStart() != OK){
+    	// Oh Oh
+    	// It should not enter here!!!
+    	for(;;){};
+    };
+
+#if 0
     /* Main loop */
     while(1){
 
@@ -71,7 +97,9 @@ int main()
     		one_second_flag = 0;
     	} // end one_second_flag
     } // end main loop
+#endif
 
+    return 0;
 } // end main
 
 

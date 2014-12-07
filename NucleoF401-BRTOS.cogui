@@ -11,14 +11,23 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
+<part id="2"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.coocox.welcome.ui.WelcomePage" name="" partName="welcome" title="welcome" tooltip="" workbook="DefaultEditorWorkbook">
-<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">
-<org.coocox.welcome.ui.WelcomePage/>
-</input>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="tasks.h" partName="tasks.h" path="D:/Desenvolvimento/STM32/STM32-Nucleo/Projects/NucleoF401-COIDE-BRTOS/tasks.h" title="tasks.h" tooltip="D:/Desenvolvimento/STM32/STM32-Nucleo/Projects/NucleoF401-COIDE-BRTOS/tasks.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NucleoF401-BRTOS/tasks.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="96" selectionOffset="686" selectionTopPixel="55"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="D:/Desenvolvimento/STM32/STM32-Nucleo/Projects/NucleoF401-COIDE-BRTOS/main.c" title="main.c" tooltip="D:/Desenvolvimento/STM32/STM32-Nucleo/Projects/NucleoF401-COIDE-BRTOS/main.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NucleoF401-BRTOS/main.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1775" selectionTopPixel="210"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="tasks.c" partName="tasks.c" path="D:/Desenvolvimento/STM32/STM32-Nucleo/Projects/NucleoF401-COIDE-BRTOS/tasks.c" title="tasks.c" tooltip="D:/Desenvolvimento/STM32/STM32-Nucleo/Projects/NucleoF401-COIDE-BRTOS/tasks.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NucleoF401-BRTOS/tasks.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="782" selectionTopPixel="180"/>
 </editor>
 </editors>
 <views>
@@ -26,17 +35,16 @@
 <viewState/>
 </view>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="15">
 <expanded>
 <element path="/NucleoF401-BRTOS"/>
 <element path="/NucleoF401-BRTOS/cmsis"/>
 <element path="/NucleoF401-BRTOS/cmsis_boot"/>
+<element path="/NucleoF401-BRTOS/cmsis_boot/startup"/>
 <element path="/NucleoF401-BRTOS/cmsis_lib"/>
-<element path="/NucleoF401-BRTOS/stdio"/>
-<element path="/NucleoF401-BRTOS/syscalls"/>
 </expanded>
 <selection>
-<element path="/NucleoF401-BRTOS"/>
+<element path="/NucleoF401-BRTOS/tasks.c"/>
 </selection>
 </viewState>
 </view>
@@ -69,7 +77,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.coocox.builder.ui.views.ProjectView" activePerspective="org.coocox.builder.perspective.CoBuilder">
+<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
 <alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
@@ -265,8 +273,101 @@
 <editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage">
 <org.coocox.welcome.ui.WelcomePage/>
 </editor>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage">
+<org.coocox.welcome.ui.WelcomePage/>
+</editor>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/NucleoF401-BRTOS/cmsis_boot/startup/startup_stm32f4xx.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/NucleoF401-BRTOS/hal/HAL.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/NucleoF401-BRTOS/tasks.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/NucleoF401-BRTOS/tasks.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/NucleoF401-BRTOS/BRTOSConfig.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/NucleoF401-BRTOS/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/NucleoF401-BRTOS/brtos/includes/BRTOS.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/NucleoF401-BRTOS/hal/HAL.h"/>
 </editors>
-<item active="true" historyLabel="welcome" index="0"/>
+<item historyLabel="welcome" index="0"/>
+<item historyLabel="welcome" index="1"/>
+<item historyLabel="startup_stm32f4xx.c" index="2">
+<position info="not_deleted" x="6325" y="0"/>
+</item>
+<item historyLabel="HAL.h" index="3">
+<position info="not_deleted" x="6682" y="0"/>
+</item>
+<item historyLabel="tasks.h" index="4">
+<position info="not_deleted" x="557" y="0"/>
+</item>
+<item historyLabel="tasks.c" index="5">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="startup_stm32f4xx.c" index="2">
+<position info="not_deleted" x="6325" y="0"/>
+</item>
+<item historyLabel="tasks.c" index="5">
+<position info="not_deleted" x="1038" y="0"/>
+</item>
+<item historyLabel="BRTOSConfig.h" index="6">
+<position info="not_deleted" x="2997" y="0"/>
+</item>
+<item historyLabel="tasks.c" index="5">
+<position info="not_deleted" x="905" y="0"/>
+</item>
+<item historyLabel="main.c" index="7">
+<position info="not_deleted" x="1132" y="0"/>
+</item>
+<item historyLabel="BRTOS.h" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="7">
+<position info="not_deleted" x="1651" y="0"/>
+</item>
+<item historyLabel="HAL.h" index="9">
+<position info="not_deleted" x="1545" y="11"/>
+</item>
+<item historyLabel="tasks.c" index="5">
+<position info="not_deleted" x="905" y="0"/>
+</item>
+<item historyLabel="HAL.h" index="9">
+<position info="not_deleted" x="1545" y="11"/>
+</item>
+<item historyLabel="main.c" index="7">
+<position info="not_deleted" x="1652" y="0"/>
+</item>
+<item historyLabel="HAL.h" index="9">
+<position info="not_deleted" x="1560" y="0"/>
+</item>
+<item historyLabel="main.c" index="7">
+<position info="not_deleted" x="1652" y="0"/>
+</item>
+<item historyLabel="HAL.h" index="9">
+<position info="not_deleted" x="1560" y="0"/>
+</item>
+<item historyLabel="main.c" index="7">
+<position info="not_deleted" x="1504" y="0"/>
+</item>
+<item historyLabel="HAL.h" index="9">
+<position info="not_deleted" x="1560" y="0"/>
+</item>
+<item historyLabel="main.c" index="7">
+<position info="not_deleted" x="1775" y="0"/>
+</item>
+<item historyLabel="tasks.h" index="4">
+<position info="not_deleted" x="686" y="96"/>
+</item>
+<item historyLabel="HAL.h" index="9">
+<position info="not_deleted" x="1560" y="0"/>
+</item>
+<item historyLabel="tasks.h" index="4">
+<position info="not_deleted" x="686" y="96"/>
+</item>
+<item historyLabel="tasks.c" index="5">
+<position info="not_deleted" x="782" y="0"/>
+</item>
+<item historyLabel="main.c" index="7">
+<position info="not_deleted" x="1775" y="0"/>
+</item>
+<item active="true" historyLabel="tasks.c" index="5">
+<position info="not_deleted" x="782" y="0"/>
+</item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -274,10 +375,26 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage" name="" tooltip="">
-<persistable>
-<org.coocox.welcome.ui.WelcomePage/>
-</persistable>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tasks.c" tooltip="NucleoF401-BRTOS/tasks.c">
+<persistable path="/NucleoF401-BRTOS/tasks.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="HAL.h" tooltip="NucleoF401-BRTOS/hal/HAL.h">
+<persistable path="/NucleoF401-BRTOS/hal/HAL.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="BRTOS.h" tooltip="NucleoF401-BRTOS/brtos/includes/BRTOS.h">
+<persistable path="/NucleoF401-BRTOS/brtos/includes/BRTOS.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="NucleoF401-BRTOS/main.c">
+<persistable path="/NucleoF401-BRTOS/main.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="BRTOSConfig.h" tooltip="NucleoF401-BRTOS/BRTOSConfig.h">
+<persistable path="/NucleoF401-BRTOS/BRTOSConfig.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="tasks.h" tooltip="NucleoF401-BRTOS/tasks.h">
+<persistable path="/NucleoF401-BRTOS/tasks.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" tooltip="NucleoF401-BRTOS/cmsis_boot/startup/startup_stm32f4xx.c">
+<persistable path="/NucleoF401-BRTOS/cmsis_boot/startup/startup_stm32f4xx.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="STM32F4.h" tooltip="NucleoF401-LCD/glcd/devices/STM32F4.h">
 <persistable path="/NucleoF401-LCD/glcd/devices/STM32F4.h"/>
@@ -302,24 +419,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="STM32F4xx_DEV.h" tooltip="NucleoF401-LCD/GLCD/devices/STM32F4xx_DEV.h">
 <persistable path="/NucleoF401-LCD/GLCD/devices/STM32F4xx_DEV.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_gpio.c" tooltip="NucleoF401-LCD/cmsis_lib/source/stm32f4xx_gpio.c">
-<persistable path="/NucleoF401-LCD/cmsis_lib/source/stm32f4xx_gpio.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_spi.c" tooltip="NucleoF401-LCD/cmsis_lib/source/stm32f4xx_spi.c">
-<persistable path="/NucleoF401-LCD/cmsis_lib/source/stm32f4xx_spi.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_spi.h" tooltip="NucleoF401-LCD/cmsis_lib/include/stm32f4xx_spi.h">
-<persistable path="/NucleoF401-LCD/cmsis_lib/include/stm32f4xx_spi.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" tooltip="NucleoF401-LCD/cmsis_boot/startup/startup_stm32f4xx.c">
-<persistable path="/NucleoF401-LCD/cmsis_boot/startup/startup_stm32f4xx.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="STM32F4xx_DEV.c" tooltip="NucleoF401-LCD/GLCD/devices/STM32F4xx_DEV.c">
-<persistable path="/NucleoF401-LCD/GLCD/devices/STM32F4xx_DEV.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="glcd_controllers.h" tooltip="NucleoF401-LCD/GLCD/glcd_controllers.h">
-<persistable path="/NucleoF401-LCD/GLCD/glcd_controllers.h"/>
 </file>
 </mruList>
 </workbench>

@@ -145,6 +145,11 @@ void Default_Reset_Handler(void);   /*!< Default reset handler                */
 static void Default_Handler(void);  /*!< Default exception handler            */
 
 
+void TickTimer(void);
+__attribute__ ((naked)) void SwitchContext(void);
+__attribute__ ((naked)) void SwitchContextToFirstTask(void);
+void ENET_ISR(void);
+
 /**
   *@brief The minimal vector table for a Cortex M3.  Note that the proper constructs
   *       must be placed on this to ensure that it ends up at physical address
@@ -162,11 +167,11 @@ void (* const g_pfnVectors[])(void) =
   BusFault_Handler,          /*!< Bus Fault Handler                           */
   UsageFault_Handler,        /*!< Usage Fault Handler                         */
   0,0,0,0,                   /*!< Reserved                                    */
-  SVC_Handler,               /*!< SVCall Handler                              */
+  SwitchContextToFirstTask,               /*!< SVCall Handler                              */               /*!< SVCall Handler                              */
   DebugMon_Handler,          /*!< Debug Monitor Handler                       */
   0,                         /*!< Reserved                                    */
-  PendSV_Handler,            /*!< PendSV Handler                              */
-  SysTick_Handler,           /*!< SysTick Handler                             */
+  SwitchContext,            /*!< PendSV Handler                              */
+  TickTimer,           /*!< SysTick Handler                             */
   
   /*----------External Exceptions---------------------------------------------*/
   WWDG_IRQHandler,           /*!<  0: Window WatchDog                         */
