@@ -5,28 +5,26 @@
  * using ST NUCLEO-F401RE board with STM32F401RE controller.
  *
  * Clock is configured as:
- *   External 8MHz from STLINK V2.
- *   Main clock: 84MHz
- *   AHB clock: 84MHz
- *   APB1 clock: 42MHz
- *   APB2 clcok: 84MHz
- *   Timers clock: 84MHz
- *   SDIO clock: 48MHz
+ * External 8MHz from STLINK V2.
+ * Main clock: 84MHz
+ * AHB clock: 84MHz
+ * APB1 clock: 42MHz
+ * APB2 clcok: 84MHz
+ * Timers clock: 84MHz
+ * SDIO clock: 48MHz
  *
  * Flash Prefetch enabled and 2 wait states (minimum for 84MHz and 3.3V).
- *
- * Project based on a smaller STM32F401RC supported by Coocox. In linker configuration
- * the ram and flash size is updated to suit the STM32F401RE.
- *
- * This example configures the LED pin as output and every second the led toogle.
- * Time base is from TIM3, configured to generate an update interrupt every second.
- *
- * USART2 configured to output from printf function. USART2 is connected to
- * STLINK with 9600 baud. This way one can use the Virtual COM Port from STLINK.
- *
- * A string with a counter is printed in serial every second.
- * When the user press the button on Nucleo board, a string is
- * printed in serial.
+ * 
+ * This demo uses two tasks. One of them flashes the LED and prints a
+ * string with a counter in serial every second.
+ * 
+ * The second task is used to handle the user button switch press event. When the user press the
+ * button a string is printed in serial.
+ * 
+ * Using a mutex to avoid conflicts with two tasks sharing the serial.
+ * 
+ * Serial used is USART2 that is connected in STLINK V2-1 and becomes 
+ * a Virtual Serial Com port when STLINK is connected.
  *
  * Miguel Moreto
  * Florianopolis - Brazil - 2014
