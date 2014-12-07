@@ -31,21 +31,12 @@
  */
 #include "stm32f4xx.h"
 #include "InitPeriph.h"
+#include "UART.h"
 
 #include "BRTOS.h"
 #include "tasks.h"
 
 #include <stdio.h>
-
-#ifdef __GNUC__
-  /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
-     set to 'Yes') calls __io_putchar() */
-  #define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
-#else
-  #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
-#endif /* __GNUC__ */
-
-
 
 
 int main(void){
@@ -59,11 +50,16 @@ int main(void){
 
     /* Configuring Peripherals: */
     MyConfigGPIO();
-    MyConfigUSART();
+
     //MyConfigTimers(); // Not using timer in this demo.
 
     /* Initialize BRTOS */
     BRTOS_Init();
+
+    /* Initialize USART driver for BRTOS. Parameter 3 is
+     * the  mutex priority. It should be 1 number higher
+     * than the highest priority task. */
+    UART2_Init(3);
 
     GPIO_SetBits(LED1_PORT, LED1);
 
@@ -72,15 +68,6 @@ int main(void){
     	// It should not enter here!!!
     	while(1){};
     };
-
-    /* Creates a mutex with priority equal to 10.
-     * The mutex priority have to be greater than
-     * the highest priority of the task the access
-     * the shared resource. */
-    if (OSMutexCreate(&SerialMutex,10) != ALLOC_EVENT_OK){
-    	// Mutex allocation failed
-    	// Treat this error here !!!
-    }
 
     /* Install blink led task */
     if(InstallTask(&Task_BlinkLed,"Blink LED",512,1,NULL) != OK){
@@ -133,6 +120,7 @@ void USER_BTN_IRQ_handler(void)
 	OS_INT_EXIT_EXT();
 }
 
+#if 0
 /**
   * @brief  Retargets the C library printf function to the USART.
   * @param  None
@@ -140,11 +128,16 @@ void USER_BTN_IRQ_handler(void)
   */
 PUTCHAR_PROTOTYPE
 {
-  /* Place your implementation of fputc here */
-  /* e.g. write a character to the USART */
-  USART_SendData(USART2, (uint8_t) ch);
-  /* Loop until the end of transmission */
-  while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET)
-  {}
-  return ch;
+	/* Place your implementation of fputc here */
+	/* e.g. write a character to the USART */
+
+	/* BRTOS USART driver handles the serial with
+	 * interrupts and semaphores. This way, your program is
+	 * not freeze while the serial transmitting finishes.
+	 * Mutex is also used in order to enable only one
+	 * task to access serial port register at a time.  */
+	UARTPutChar(USART2, (char) ch);
+
+	return ch;
 }
+#endif

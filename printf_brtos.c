@@ -3,31 +3,20 @@
  * @brief    Implementation of several stdio.h methods, such as printf(), 
  *           sprintf() and so on. This reduces the memory footprint of the
  *           binary when using those methods, compared to the libc implementation.
+ *
+ *
+ * This is a implementation for using with BRTOS UART driver.
+ * Based on interrupts, with semaphores an mutexes.
+ *
+ * Moreto
+ * Florianopolis, Brazil, 2014
  ********************************************************************************/
 #include <stdio.h>
 #include <stdarg.h>
 #include "stm32f4xx.h"
 #include "stm32f4xx_usart.h"
+#include "UART.h"
 
-
-/**
- * @brief  Transmit a char, if you want to use printf(), 
- *         you need implement this function
- *
- * @param  pStr	Storage string.
- * @param  c    Character to write.
- */
-void PrintChar(char c)
-{
-	/* Send a char like: 
-	   while(Transfer not completed);
-	   Transmit a char;
-	*/
-	USART_SendData(USART2, c);
-	/* Loop until the end of transmission */
-	while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET)
-	{}
-}
 
 /** Maximum string size allowed (in bytes). */
 #define MAX_STRING_SIZE         100
@@ -522,12 +511,15 @@ signed int fputc(signed int c, FILE *pStream)
 {
     if ((pStream == stdout) || (pStream == stderr)) {
 
-    	PrintChar(c);
-
+    	/* Send char to serial. */
+    	USART2->DR = c;
+    	/* Enable interrupt. */
+    	USART_ITConfig(USART2, USART_IT_TC, ENABLE);
+    	/* Wait for interrupt (or timeout for 5ms) */
+    	(void)OSSemPend(SerialTX2,5);
         return c;
     }
     else {
-
         return EOF;
     }
 }
@@ -547,15 +539,20 @@ signed int fputs(const char *pStr, FILE *pStream)
 {
     signed int num = 0;
 
+    /* BRTOS mutex avoit more than one task to access
+     * serial at the same time */
+    (void)OSMutexAcquire(SerialMutex);
     while (*pStr != 0) {
 
-        if (fputc(*pStr, pStream) == -1) {
+        if (fputc(*pStr, pStream) == EOF) {
 
-            return -1;
+        	(void)OSMutexRelease(SerialMutex);
+            return EOF;
         }
         num++;
         pStr++;
     }
+    (void)OSMutexRelease(SerialMutex);
 
     return num;
 }

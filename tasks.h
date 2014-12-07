@@ -29,9 +29,6 @@
 /* BRTOS Semaphores */
 BRTOS_Sem     *SemaphoreKey;
 
-/* BRTOS Mutexes */
-BRTOS_Mutex *SerialMutex;
-
 void Task_BlinkLed(void);
 void Task_KeyDebounce(void);
 

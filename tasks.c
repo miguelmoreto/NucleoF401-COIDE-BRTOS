@@ -29,6 +29,7 @@
 #include <stdio.h>
 #include "BRTOS.h"
 #include "tasks.h"
+#include "UART.h"
 
 #include "stm32f4xx.h"
 #include "stm32f4xx_gpio.h"
@@ -43,11 +44,7 @@ void Task_BlinkLed(void)
 	/* task main loop */
 	for (;;){
 
-		/* Using mutex to avoid more than one task
-		 * using the serial at the same time */
-		(void)OSMutexAcquire(SerialMutex);
 		printf("\r\n%d seconds passed.",counter);
-		(void)OSMutexRelease(SerialMutex);
 
 		GPIO_SetBits(LED1_PORT,LED1);
 		DelayTask(50);
@@ -67,20 +64,30 @@ void Task_KeyDebounce(void){
     EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
     EXTI_InitStructure.EXTI_LineCmd = ENABLE;
 
+    unsigned char character;
 	/* task main loop */
 
 	for (;;){
 
 		/* Wait for key press */
 		(void)OSSemPend(SemaphoreKey,0);
-		/* Using mutex to avoid more than one task
-		 * using the serial at the same time */
-		(void)OSMutexAcquire(SerialMutex);
-		printf("\r\nKey pressed.");
-		(void)OSMutexRelease(SerialMutex);
 
+		printf("\r\nKey pressed.");
+		printf("\r\nType something: ");
+
+		(void)UARTGetChar(USART2,&character, 0);
+		printf("\r\nYou typed: %c", character);
+
+		/* If the terminal program sends a string at once,
+		 * this loop will get all the remaing values stored
+		 * in the Queue. If there is no more data, Queue pend
+		 * will wait for 50ms, this time is also used for key
+		 * debounce. */
+		while (UARTGetChar(USART2,&character, 50) == READ_BUFFER_OK){
+			printf("\r\nYou typed: %c", character);
+		}
 		/* Wait for some milliseconds to debounce key */
-		DelayTask(50);
+		//DelayTask(50);
 
 		/*Re-enable exti line interrupt */
 	    EXTI_Init(&EXTI_InitStructure);

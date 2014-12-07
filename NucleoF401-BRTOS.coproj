@@ -72,7 +72,6 @@
   </Target>
   <Components path="./">
     <Component id="30" name="C Library" path="" type="2"/>
-    <Component id="31" name="Retarget printf" path="" type="2"/>
     <Component id="54" name="M4 CMSIS Core" path="" type="2"/>
     <Component id="500" name="CMSIS BOOT" path="" type="2"/>
     <Component id="501" name="RCC" path="" type="2"/>
@@ -90,13 +89,13 @@
     <File name="brtos/.svn/pristine/7a" path="" type="2"/>
     <File name="brtos/.svn/pristine/ee/ee968cd7fd6ba92639467492370dcfdbddc094d6.svn-base" path="brtos/.svn/pristine/ee/ee968cd7fd6ba92639467492370dcfdbddc094d6.svn-base" type="1"/>
     <File name="InitPeriph.c" path="InitPeriph.c" type="1"/>
-    <File name="cmsis_lib/include/stm32f4xx_usart.h" path="cmsis_lib/include/stm32f4xx_usart.h" type="1"/>
     <File name="BRTOSConfig.h" path="BRTOSConfig.h" type="1"/>
+    <File name="cmsis_lib/include/stm32f4xx_usart.h" path="cmsis_lib/include/stm32f4xx_usart.h" type="1"/>
     <File name="brtos/mbox.c" path="brtos/mbox.c" type="1"/>
     <File name="brtos/.svn/pristine/95/95fd0fc81bcbc4e0266d0febb3130f4938959a55.svn-base" path="brtos/.svn/pristine/95/95fd0fc81bcbc4e0266d0febb3130f4938959a55.svn-base" type="1"/>
+    <File name="cmsis/core_cm4_simd.h" path="cmsis/core_cm4_simd.h" type="1"/>
     <File name="cmsis_boot/stm32f4xx.h" path="cmsis_boot/stm32f4xx.h" type="1"/>
     <File name="brtos/.svn/pristine/11/1184e656b86d5f06fae26599408e1f4547c0e360.svn-base" path="brtos/.svn/pristine/11/1184e656b86d5f06fae26599408e1f4547c0e360.svn-base" type="1"/>
-    <File name="cmsis/core_cm4_simd.h" path="cmsis/core_cm4_simd.h" type="1"/>
     <File name="tasks.h" path="tasks.h" type="1"/>
     <File name="cmsis/core_cmFunc.h" path="cmsis/core_cmFunc.h" type="1"/>
     <File name="hal/.svn/pristine" path="" type="2"/>
@@ -105,7 +104,6 @@
     <File name="brtos/.svn/pristine/9d/9d769ccb2295d8fbe218f6eb62cbeea7a9419412.svn-base" path="brtos/.svn/pristine/9d/9d769ccb2295d8fbe218f6eb62cbeea7a9419412.svn-base" type="1"/>
     <File name="brtos/.svn/pristine/11" path="" type="2"/>
     <File name="brtos/.svn/pristine/7a/7a8d2601f966931db44570e07956985aed4d7c84.svn-base" path="brtos/.svn/pristine/7a/7a8d2601f966931db44570e07956985aed4d7c84.svn-base" type="1"/>
-    <File name="stdio/printf.c" path="stdio/printf.c" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_rcc.h" path="cmsis_lib/include/stm32f4xx_rcc.h" type="1"/>
     <File name="brtos/.svn/pristine/bc" path="" type="2"/>
     <File name="brtos/mutex.c" path="brtos/mutex.c" type="1"/>
@@ -114,20 +112,21 @@
     <File name="brtos/.svn/pristine/f6/f61be6ed13dc0ec0ca2507239d5aa663d2765031.svn-base" path="brtos/.svn/pristine/f6/f61be6ed13dc0ec0ca2507239d5aa663d2765031.svn-base" type="1"/>
     <File name="tasks.c" path="tasks.c" type="1"/>
     <File name="cmsis_boot/startup/startup_stm32f4xx.c" path="cmsis_boot/startup/startup_stm32f4xx.c" type="1"/>
-    <File name="stdio" path="" type="2"/>
     <File name="hal/.svn/format" path="hal/.svn/format" type="1"/>
-    <File name="cmsis_lib/source/stm32f4xx_rcc.c" path="cmsis_lib/source/stm32f4xx_rcc.c" type="1"/>
     <File name="brtos/queue.c" path="brtos/queue.c" type="1"/>
+    <File name="cmsis_lib/source/stm32f4xx_rcc.c" path="cmsis_lib/source/stm32f4xx_rcc.c" type="1"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="brtos/includes" path="" type="2"/>
+    <File name="UART.h" path="UART.h" type="1"/>
     <File name="hal" path="" type="2"/>
     <File name="cmsis_boot/system_stm32f4xx.c" path="cmsis_boot/system_stm32f4xx.c" type="1"/>
     <File name="brtos/.svn/pristine/94/94f693ab22e199e9e3720d585be8dd0ac70bcfe7.svn-base" path="brtos/.svn/pristine/94/94f693ab22e199e9e3720d585be8dd0ac70bcfe7.svn-base" type="1"/>
     <File name="hal/.svn/pristine/c3" path="" type="2"/>
     <File name="brtos/semaphore.c" path="brtos/semaphore.c" type="1"/>
     <File name="cmsis" path="" type="2"/>
-    <File name="brtos/.svn/pristine/9d" path="" type="2"/>
     <File name="cmsis_lib" path="" type="2"/>
+    <File name="brtos/.svn/pristine/9d" path="" type="2"/>
+    <File name="UART.c" path="UART.c" type="1"/>
     <File name="brtos/.svn/entries" path="brtos/.svn/entries" type="1"/>
     <File name="brtos/.svn/pristine/c0/c0609c2ba2b9fcb8397e66720f171e3d7a255ae5.svn-base" path="brtos/.svn/pristine/c0/c0609c2ba2b9fcb8397e66720f171e3d7a255ae5.svn-base" type="1"/>
     <File name="cmsis_lib/include/misc.h" path="cmsis_lib/include/misc.h" type="1"/>
@@ -139,12 +138,11 @@
     <File name="brtos/.svn/pristine/94" path="" type="2"/>
     <File name="hal/.svn" path="" type="2"/>
     <File name="cmsis_boot" path="" type="2"/>
-    <File name="hal/.svn/tmp" path="" type="2"/>
     <File name="cmsis_lib/include/stm32f4xx_syscfg.h" path="cmsis_lib/include/stm32f4xx_syscfg.h" type="1"/>
     <File name="brtos/OS_RTC.c" path="brtos/OS_RTC.c" type="1"/>
     <File name="brtos/.svn/pristine/f6" path="" type="2"/>
-    <File name="brtos/timers.c" path="brtos/timers.c" type="1"/>
     <File name="brtos/.svn/pristine/c0" path="" type="2"/>
+    <File name="brtos/timers.c" path="brtos/timers.c" type="1"/>
     <File name="cmsis_boot/startup" path="" type="2"/>
     <File name="cmsis/core_cm4.h" path="cmsis/core_cm4.h" type="1"/>
     <File name="brtos/.svn/format" path="brtos/.svn/format" type="1"/>
@@ -156,21 +154,21 @@
     <File name="cmsis_lib/source" path="" type="2"/>
     <File name="brtos/.svn/pristine/62" path="" type="2"/>
     <File name="brtos/.svn/pristine/61" path="" type="2"/>
+    <File name="printf_brtos.c" path="printf_brtos.c" type="1"/>
     <File name="cmsis_boot/stm32f4xx_conf.h" path="cmsis_boot/stm32f4xx_conf.h" type="1"/>
     <File name="cmsis_boot/system_stm32f4xx.h" path="cmsis_boot/system_stm32f4xx.h" type="1"/>
     <File name="brtos/.svn/pristine/62/6279fd4368864c6ed847bcdc27a31a935876b8d4.svn-base" path="brtos/.svn/pristine/62/6279fd4368864c6ed847bcdc27a31a935876b8d4.svn-base" type="1"/>
-    <File name="brtos/.svn/tmp" path="" type="2"/>
     <File name="stm32f4xx_it.h" path="stm32f4xx_it.h" type="1"/>
-    <File name="brtos/.svn/pristine/bc/bc00ee550895bfbc4881a61ad27ce20d4990b50f.svn-base" path="brtos/.svn/pristine/bc/bc00ee550895bfbc4881a61ad27ce20d4990b50f.svn-base" type="1"/>
-    <File name="hal/.svn/pristine/ad" path="" type="2"/>
     <File name="hal/HAL.h" path="hal/HAL.h" type="1"/>
+    <File name="hal/.svn/pristine/ad" path="" type="2"/>
+    <File name="brtos/.svn/pristine/bc/bc00ee550895bfbc4881a61ad27ce20d4990b50f.svn-base" path="brtos/.svn/pristine/bc/bc00ee550895bfbc4881a61ad27ce20d4990b50f.svn-base" type="1"/>
     <File name="brtos/includes/BRTOS.h" path="brtos/includes/BRTOS.h" type="1"/>
-    <File name="brtos/README.txt" path="brtos/README.txt" type="1"/>
-    <File name="cmsis_lib/include/stm32f4xx_exti.h" path="cmsis_lib/include/stm32f4xx_exti.h" type="1"/>
     <File name="cmsis_lib/source/stm32f4xx_exti.c" path="cmsis_lib/source/stm32f4xx_exti.c" type="1"/>
     <File name="brtos/.svn/wc.db" path="brtos/.svn/wc.db" type="1"/>
-    <File name="brtos/.svn" path="" type="2"/>
+    <File name="brtos/README.txt" path="brtos/README.txt" type="1"/>
+    <File name="cmsis_lib/include/stm32f4xx_exti.h" path="cmsis_lib/include/stm32f4xx_exti.h" type="1"/>
     <File name="brtos" path="" type="2"/>
+    <File name="brtos/.svn" path="" type="2"/>
     <File name="cmsis_lib/source/stm32f4xx_tim.c" path="cmsis_lib/source/stm32f4xx_tim.c" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_gpio.h" path="cmsis_lib/include/stm32f4xx_gpio.h" type="1"/>
     <File name="brtos/.svn/pristine" path="" type="2"/>
