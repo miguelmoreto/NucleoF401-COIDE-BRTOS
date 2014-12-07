@@ -8,8 +8,6 @@
 
 #include "UART.h"
 
-
-
 /* Init the USART 2 */
 void UART2_Init(uint8_t priority)
 {

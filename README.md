@@ -30,10 +30,14 @@ Flash Prefetch enabled and 2 wait states (minimum for 84MHz and 3.3V).
 This demo uses two tasks. One of them flashes the LED and prints a
 string with a counter in serial every second.
 
-The second task is used to handle the user button switch press event. When the user press the
-button a string is printed in serial.
+The second task is used to handle the user button switch press event. 
+When the user press the button a string is printed in serial and 
+waits for user to input some character at the serial.
 
 Using a mutex to avoid conflicts with two tasks sharing the serial.
+This is done in UART driver (UART.c and UART.h).
+Using a small implementation of printf, adapted to be used with 
+BRTOS UART driver (printf_brtos.c).
 
 Serial used is USART2 that is connected in STLINK V2-1 and becomes 
 a Virtual Serial Com port when STLINK is connected.

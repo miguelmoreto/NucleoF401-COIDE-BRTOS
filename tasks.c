@@ -79,7 +79,7 @@ void Task_KeyDebounce(void){
 		printf("\r\nYou typed: %c", character);
 
 		/* If the terminal program sends a string at once,
-		 * this loop will get all the remaing values stored
+		 * this loop will get all the remaining values stored
 		 * in the Queue. If there is no more data, Queue pend
 		 * will wait for 50ms, this time is also used for key
 		 * debounce. */

@@ -19,9 +19,13 @@
  * string with a counter in serial every second.
  * 
  * The second task is used to handle the user button switch press event. When the user press the
- * button a string is printed in serial.
+ * button a string is printed in serial and waits for user to input some
+ * character at the serial.
  * 
  * Using a mutex to avoid conflicts with two tasks sharing the serial.
+ * This is done in UART driver (UART.c and UART.h).
+ * Using a small implementation of printf, adapted to be
+ * used with BRTOS UART driver (printf_brtos.c).
  * 
  * Serial used is USART2 that is connected in STLINK V2-1 and becomes 
  * a Virtual Serial Com port when STLINK is connected.
@@ -119,25 +123,3 @@ void USER_BTN_IRQ_handler(void)
 	/* Exit interrupt */
 	OS_INT_EXIT_EXT();
 }
-
-#if 0
-/**
-  * @brief  Retargets the C library printf function to the USART.
-  * @param  None
-  * @retval None
-  */
-PUTCHAR_PROTOTYPE
-{
-	/* Place your implementation of fputc here */
-	/* e.g. write a character to the USART */
-
-	/* BRTOS USART driver handles the serial with
-	 * interrupts and semaphores. This way, your program is
-	 * not freeze while the serial transmitting finishes.
-	 * Mutex is also used in order to enable only one
-	 * task to access serial port register at a time.  */
-	UARTPutChar(USART2, (char) ch);
-
-	return ch;
-}
-#endif
